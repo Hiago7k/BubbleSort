@@ -4,7 +4,7 @@ public class ArrayDuplicado {
 
         int c = 0;
         int naoDuplicados = 0 ;
-
+        // O(n2)
         for (int i = 0; i < nums.length; i++){
             for (int j = i; j < nums.length -1; j++){
                 if (nums[i] == nums[j+1]){
