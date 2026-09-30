@@ -3,7 +3,6 @@ public class MaiorElementoDeUmArray {
 
         int[] nums = {2, 23, 122, 9, 0, 2, 21};
 
-
         int maiorValor = 0;
         for(int i = 0; i < nums.length; i++){
             if (nums[i] > maiorValor){
