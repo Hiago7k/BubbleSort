@@ -55,7 +55,7 @@ public class MatrizEstacionamento {
                 indiceDoSetorMaisCheio = (i + 1);
             }
 
-            porcentualPorlinha = ((float) qtdVagasOcupadasPorlinha / 6) * 100;
+            porcentualPorlinha = ((float) qtdVagasOcupadasPorlinha / estacionamento[i].length) * 100;
 
             if (porcentualPorlinha >= 75){
                 statusLinha = "Alerta!";
