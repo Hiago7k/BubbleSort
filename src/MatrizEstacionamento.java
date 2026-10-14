@@ -22,6 +22,7 @@ public class MatrizEstacionamento {
             int maiorSeqVagasLivrePorLinha = 0;
             int historicoMaiorSeq = 0;
             String statusLinha = "Normal";
+            float porcentualPorlinha = 0;
 
 
             for (int j = 0; j < estacionamento[i].length; j++) {
@@ -46,6 +47,7 @@ public class MatrizEstacionamento {
                     historicoMaiorSeq = maiorSeqVagasLivrePorLinha;
                 }
 
+
             }
 
             if (qtdVagasOcupadasPorlinha >= setorMaisCheio) {
@@ -53,22 +55,19 @@ public class MatrizEstacionamento {
                 indiceDoSetorMaisCheio = (i + 1);
             }
 
-            int totalVagasPorLinha = qtdVagasOcupadasPorlinha + qtdVagasLivresPorLinha;
-            int porcentagemLinha = totalVagasPorLinha - qtdVagasOcupadasPorlinha;
-            float porcentualPorlinha = (float) totalVagasPorLinha * porcentagemLinha / 100;
-            float porcentagemVagasLivresPorlinha = porcentualPorlinha * totalVagasPorLinha;
-            float porcetagemTotalPorlinha = 100f - porcentagemVagasLivresPorlinha;
+            porcentualPorlinha = ((float) qtdVagasOcupadasPorlinha / 6) * 100;
 
-            if (porcetagemTotalPorlinha >= 75){
+            if (porcentualPorlinha >= 75){
                 statusLinha = "Alerta!";
             }
 
             System.out.printf("A linha: %d, possui %d vagas livres%n", (i + 1), qtdVagasLivresPorLinha);
             System.out.printf("A linha: %d, possui %d vagas ocupadas%n", (i + 1), qtdVagasOcupadasPorlinha);
             System.out.printf("Maior sequência de vagas livres da linha: %d é de: %d%n", (i + 1), historicoMaiorSeq);
-            System.out.printf("Status da linha %d: %s%n",(i +1), statusLinha);
+            System.out.printf("Status da linha %d: %s%n", (i + 1), statusLinha);
             System.out.println();
         }
+
 
         int totalVagas = qtdVagasOcupadas + qtdVagasLivres;
         int porcetagem = totalVagas - qtdVagasOcupadas;
