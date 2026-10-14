@@ -14,19 +14,48 @@ public class MatrizEstacionamento {
 
         int qtdVagasOcupadas = 0;
         int qtdVagasLivres = 0;
+        int qtdVagasInterditadas = 0;
+        float percentualDeOcupacao = 0;
+        int setorMaisCheio = 0;
+        int indiceDoSetorMaisCheio = 0;
 
-        for (int i = 0; i < estacionamento.length; i++){
-            for (int j = 0; j < estacionamento[i].length; j++){
-                System.out.printf("%d ", estacionamento[i][j]);
+        for (int i = 0; i < estacionamento.length; i++) {
+
+            int qtdVagasOcupadasPorlinha = 0;
+            int qtdVagasLivresPorLinha = 0;
+            for (int j = 0; j < estacionamento[i].length; j++) {
+
                 if (estacionamento[i][j] == 1) {
-                    qtdVagasOcupadas += estacionamento[i][j];
+                    qtdVagasOcupadas++;
+                    qtdVagasOcupadasPorlinha++;
+                } else if (estacionamento[i][j] == 0) {
+                    qtdVagasLivres++;
+                    qtdVagasLivresPorLinha++;
+                } else {
+                    qtdVagasInterditadas++;
                 }
+
             }
-            System.out.println();
+            if (qtdVagasOcupadasPorlinha >= setorMaisCheio){
+                setorMaisCheio = qtdVagasOcupadasPorlinha;
+                indiceDoSetorMaisCheio = (i+1);
+            }
+            System.out.printf("A linha %d, possui %d vagas livres%n", (i +1), qtdVagasLivresPorLinha);
+            System.out.printf("A linha %d, possui %d vagas ocupadas%n", (i +1), qtdVagasOcupadasPorlinha);
         }
 
+        int totalVagas = qtdVagasOcupadas + qtdVagasLivres;
+        int porcetagem = totalVagas - qtdVagasOcupadas;
+        percentualDeOcupacao = (float) totalVagas * porcetagem / 100;
+        float reultadoOcupacao = percentualDeOcupacao * totalVagas;
+
+
         System.out.println();
-        System.out.println("==== Relatorio ====");
-        System.out.printf("Quantidade vagas ocupadas: %d", qtdVagasOcupadas);
+        System.out.println("==== Relatório ====");
+        System.out.printf("Quantidade vagas ocupadas: %d%n", qtdVagasOcupadas);
+        System.out.printf("Quantidade vagas livres: %d%n", qtdVagasLivres);
+        System.out.printf("Quantidade vagas interditadas: %d%n", qtdVagasInterditadas);
+        System.out.printf("Percentual de ocupação: %.2f%n", reultadoOcupacao);
+        System.out.printf("Setor com mais ocupação: %d%n", indiceDoSetorMaisCheio);
     }
 }
