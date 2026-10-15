@@ -24,7 +24,6 @@ public class MatrizEstacionamento {
             String statusLinha = "Normal";
             float porcentualPorlinha = 0;
 
-
             for (int j = 0; j < estacionamento[i].length; j++) {
                 qtdVagasPorLinha++;
                 if (estacionamento[i][j] == 1) {
@@ -47,7 +46,6 @@ public class MatrizEstacionamento {
                     historicoMaiorSeq = maiorSeqVagasLivrePorLinha;
                 }
 
-
             }
 
             if (qtdVagasOcupadasPorlinha >= setorMaisCheio) {
@@ -57,7 +55,7 @@ public class MatrizEstacionamento {
 
             porcentualPorlinha = ((float) qtdVagasOcupadasPorlinha / estacionamento[i].length) * 100;
 
-            if (porcentualPorlinha >= 75){
+            if (porcentualPorlinha >= 75) {
                 statusLinha = "Alerta!";
             }
 

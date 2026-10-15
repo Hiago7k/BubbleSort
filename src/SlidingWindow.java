@@ -15,6 +15,8 @@ public class SlidingWindow {
         int maiorSoma = somaJanela;
 
         for (int i = 3; i < numeros.length; i++) {
+            // numeros[i - 3] // é numeros[0] o elemento que esta esta saindo
+            // numeros[i] é numero[3] o elemento que esta entrando
             somaJanela = somaJanela - numeros[i - 3] + numeros[i];
 
             if (somaJanela > maiorSoma) {
